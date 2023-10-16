@@ -8,7 +8,7 @@ export class TokenService implements ITokenService {
   private readonly jwtService: JwtService;
 
   public async generateJwt(user: UserTokenCreateDto): Promise<string> {
-    const payload = { userId: user.id, userEmail: user.email };
+    const payload = { userId: user.id, userEmail: user.email, role: user.role };
 
     return this.jwtService.sign(payload);
   }

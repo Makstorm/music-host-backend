@@ -4,6 +4,7 @@ import { TokenModule } from '../token';
 import { AuthServiceTag } from '@domain';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
+import { JwtGuard, JwtStrategy } from '../../core';
 
 @Module({
   imports: [UserModule, TokenModule],
@@ -13,6 +14,8 @@ import { AuthController } from './auth.controller';
       provide: AuthServiceTag,
       useClass: AuthService,
     },
+    JwtStrategy,
+    JwtGuard,
   ],
   exports: [],
 })

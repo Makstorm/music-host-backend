@@ -49,6 +49,8 @@ export class AuthService implements IAuthService {
 
     userTokenDto.email = user.email;
 
+    userTokenDto.role = user.role;
+
     const token = await this.tokenService.generateJwt(userTokenDto);
 
     return new UserAuth(token);
@@ -69,6 +71,7 @@ export class AuthService implements IAuthService {
     userEntity.email = dto.email;
     userEntity.userName = dto.userName;
     userEntity.passwordHash = hashPassword;
+    userEntity.role = dto.role;
 
     await this.userService.create(userEntity);
   }

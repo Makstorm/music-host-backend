@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEmail, IsNotEmpty } from 'class-validator';
 import { randomUUID } from 'crypto';
+import { RoleType } from 'src/core';
 
 export class UserTokenCreateDto {
   @ApiProperty({
@@ -17,4 +18,12 @@ export class UserTokenCreateDto {
   @IsEmail()
   @IsNotEmpty()
   public email: string;
+
+  @ApiProperty({
+    description: 'List of posible roles',
+    enum: RoleType,
+    isArray: false,
+    example: RoleType.USER,
+  })
+  public role: RoleType;
 }
