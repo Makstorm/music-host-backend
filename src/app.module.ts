@@ -2,6 +2,8 @@ import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule, TokenModule } from './modules';
+import { ArtistModule } from './modules/artist/artist.module';
+
 import * as _entities from './domain/entities';
 
 @Module({
@@ -27,6 +29,8 @@ import * as _entities from './domain/entities';
     }),
     TokenModule,
     AuthModule,
+    ArtistModule,
   ],
+  controllers: [],
 })
 export class AppModule {}
