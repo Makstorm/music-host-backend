@@ -29,6 +29,13 @@ export class ArtistController {
     return ArtistModel.formEntity(entitty);
   }
 
+  @ApiResponse({ type: [ArtistModel] })
+  @Get()
+  public async getAll(): Promise<ArtistModel[]> {
+    const entities = await this.service.getAll();
+    return entities.map((entity) => ArtistModel.formEntity(entity));
+  }
+
   @ApiResponse({ type: ArtistModel })
   @Get('/:id')
   public async getOne(
@@ -36,13 +43,6 @@ export class ArtistController {
   ): Promise<ArtistModel> {
     const entity = await this.service.getOne(id);
     return ArtistModel.formEntity(entity);
-  }
-
-  @ApiResponse({ type: [ArtistModel] })
-  @Get()
-  public async getAll(): Promise<ArtistModel[]> {
-    const entities = await this.service.getAll();
-    return entities.map((entity) => ArtistModel.formEntity(entity));
   }
 
   @ApiResponse({ type: ArtistModel })

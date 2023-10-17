@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule, TokenModule } from './modules';
 import { ArtistModule } from './modules/artist/artist.module';
+import { AlbumModule } from './modules/album/album.module';
 
 import * as _entities from './domain/entities';
 
@@ -30,6 +31,7 @@ import * as _entities from './domain/entities';
     TokenModule,
     AuthModule,
     ArtistModule,
+    AlbumModule,
   ],
   controllers: [],
 })

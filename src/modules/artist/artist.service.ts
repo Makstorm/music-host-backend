@@ -11,7 +11,7 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class ArtistService implements IArtistService {
   @InjectRepository(ArtistEntity)
-  private readonly rerpository: Repository<ArtistEntity>;
+  private readonly repository: Repository<ArtistEntity>;
 
   public async create(dto: CreateArtistDto): Promise<ArtistEntity> {
     const artistEntity = new ArtistEntity();
@@ -20,13 +20,13 @@ export class ArtistService implements IArtistService {
     artistEntity.biography = dto.biography;
     artistEntity.genre = dto.genre;
 
-    return await this.rerpository.save(artistEntity);
+    return await this.repository.save(artistEntity);
   }
   public async getAll(): Promise<ArtistEntity[]> {
-    return await this.rerpository.find();
+    return await this.repository.find();
   }
   public async getOne(id: string): Promise<ArtistEntity> {
-    const artist = await this.rerpository.findOne({ where: { id } });
+    const artist = await this.repository.findOne({ where: { id } });
     if (!artist) {
       throw new NotFoundException(`Artist with id ${id} does not exist`);
     }
@@ -38,6 +38,6 @@ export class ArtistService implements IArtistService {
 
     const updatedArtist = Object.assign(artist, dto);
 
-    return await this.rerpository.save(updatedArtist);
+    return await this.repository.save(updatedArtist);
   }
 }
