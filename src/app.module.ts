@@ -4,8 +4,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule, TokenModule } from './modules';
 import { ArtistModule } from './modules/artist/artist.module';
 import { AlbumModule } from './modules/album/album.module';
+import { SongModule } from './modules/song/song.module';
 
 import * as _entities from './domain/entities';
+import { StorageModule } from './modules/storage/storage.module';
 
 @Module({
   imports: [
@@ -32,6 +34,8 @@ import * as _entities from './domain/entities';
     AuthModule,
     ArtistModule,
     AlbumModule,
+    SongModule,
+    StorageModule,
   ],
   controllers: [],
 })
